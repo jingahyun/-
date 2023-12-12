@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 웹사이트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .quiz-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>나만의 웹사이트</h1>
+    </header>
+
+    <main>
+        <h2>환영합니다!</h2>
+        <p>이것은 간단한 웹사이트의 본문입니다. 여기에 내용을 추가하세요.</p>
+
+        <div class="quiz-container">
+            <h3>영화/드라마 명대사 퀴즈</h3>
+
+            <p>1. "지금까지 이런 맛은 없었다. 이것은 갈비인가 통닭인가. " 
+                <input type="text" id="answer1">
+                <button onclick="checkAnswer(1)">정답 확인</button>
+            </p>
+
+            <p>2. "I'll Be Back."
+                <input type="text" id="answer2">
+                <button onclick="checkAnswer(2)">정답 확인</button>
+            </p>
+
+            <p>3. "아직 신에게는 12척의 배가 남아 있사옵니다."
+                <input type="text" id="answer3">
+                <button onclick="checkAnswer(3)">정답 확인</button>
+            </p>
+
+            <p>4. "Shut up, Malfoy."
+                <input type="text" id="answer4">
+                <button onclick="checkAnswer(4)">정답 확인</button>
+            </p>
+
+            <p>5. "어이가 없네."
+                <input type="text" id="answer5">
+                <button onclick="checkAnswer(5)">정답 확인</button>
+            </p>
+            <!-- 추가적인 명대사들을 원하는 만큼 추가하세요 -->
+
+            <p id="result"></p>
+            <p id="total-score">총점: <span id="score">0</span>점</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 나만의 웹사이트. 모든 권리 보유.</p>
+    </footer>
+
+    <script>
+        var totalScore = 0;
+
+        function checkAnswer(questionNumber) {
+            var userAnswer = document.getElementById('answer' + questionNumber).value.toLowerCase();
+            var correctAnswer = '';
+
+            // 각 문제에 대한 정답을 설정합니다.
+            switch (questionNumber) {
+                case 1:
+                    correctAnswer = '극한직업';
+                    break;
+                case 2:
+                    correctAnswer = '터미네이터';
+                    break;
+                case 3:
+                    correctAnswer = '명량';
+                    break;
+                case 4:
+                    correctAnswer = '해리포터';
+                    break;
+                case 5:
+                    correctAnswer = '베테랑';
+                    break;
+                // 추가적인 문제에 대한 정답을 설정하세요
+                // case
+                //     correctAnswer = '영화3 정답';
+                //     break;
+            }
+
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                document.getElementById('result').innerHTML = '정답입니다!';
+                totalScore += 20;
+            } else {
+                document.getElementById('result').innerHTML = '틀렸습니다. 정답은 ' + correctAnswer + '입니다.';
+            }
+
+            document.getElementById('score').innerHTML = totalScore;
+        }
+    </script>
+
+</body>
+</html>
